@@ -57,5 +57,5 @@ class Akasata(commands.AutoShardedBot):
 
 
 if __name__ == "__main__":
-	bot = Akasata()
+	bot= Akasata()
 	bot.run(config.token)
