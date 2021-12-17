@@ -4,7 +4,7 @@ import config
 
 class Akasata(commands.AutoShardedBot):
 	def __init__(self, *options):
-		super().__init__(intents= discord.Intents.all(), command_prefix)
+		super().__init__(intents= discord.Intents.all(), command_prefix= self._prefix_function)
 
 	def _prefix_function(self, bot, message):
 		prefixes= (
