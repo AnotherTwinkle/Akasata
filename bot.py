@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import aiohttp
-import config
+from config import token
 
 class Akasata(commands.AutoShardedBot):
 	def __init__(self, *options):
@@ -59,4 +59,4 @@ class Akasata(commands.AutoShardedBot):
 
 if __name__ == "__main__":
 	bot= Akasata()
-	bot.run(config.token)
+	bot.run(token)
