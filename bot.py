@@ -3,6 +3,13 @@ from discord.ext import commands
 import aiohttp
 from config import token
 
+import os
+import time
+
+
+os.environ['JISHAKU_NO_UNDERSCORE'] = "True"
+os.environ['JISHAKU_NO_DM_TRACEBACK'] = "True"
+
 class Akasata(commands.AutoShardedBot):
 	def __init__(self, *options):
 		super().__init__(intents= discord.Intents.all(), command_prefix= self._prefix_function)
