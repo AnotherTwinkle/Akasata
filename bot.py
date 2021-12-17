@@ -33,7 +33,7 @@ class Akasata(commands.AutoShardedBot):
 
 		extensions = ['jishaku', 'ext.core.admin', 'ext.core.meta', 'ext.kaguya.reader', 'ext.kaguya.search']
 		
-		for ext in (extensions + kaguya_extensions):
+		for ext in extensions:
 			self.load_extension(ext)
 
 		await super().start(*args, **kwargs)
