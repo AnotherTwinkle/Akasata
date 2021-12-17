@@ -26,7 +26,7 @@ class Akasata(commands.AutoShardedBot):
 			'dear akasata '
 			)
 
-		return commands.when_mentioned_or(*prefixes)(bot, messages)
+		return commands.when_mentioned_or(*prefixes)(bot, message)
 	
 	async def start(self, *args, **kwargs):
 		self.session = aiohttp.ClientSession(loop= self.loop)
