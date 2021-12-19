@@ -151,7 +151,7 @@ class MemeEvent(commands.Cog, name= 'Meme event'):
 		# This should only be called during meme review
 		if not self.is_submission(payload.message_id):
 			return
-		self.cache.update(await self.getch_message(payload))
+		self.cache.update((await self.private_submissions_channel.fetch_message(payload.message_id)) #getch_message is too.. well.. *fast*
 		
 	@commands.Cog.listener('on_raw_reaction_add')
 	async def on_upvote(self, payload):
@@ -372,7 +372,7 @@ class MemeEvent(commands.Cog, name= 'Meme event'):
 	@commands.command(name= 'urankings', aliases= ['uranks', 'urank'])
 	async def _user_rank_table(self, ctx):
 		'''Displays a list of most upvoted users.'''
-		
+
 		users = set([s.mentions[0] for s in self.cache.submissions])
 		table = sorted([(user, sum([len(self.cache.upvotes[s.id])-1 for s in self.cache.submissions_by(user) if not self.is_disqualified(s)])) 
 						for user in users], key= lambda t : t[1], reverse= True)
