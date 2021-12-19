@@ -17,6 +17,8 @@ class Akasata(commands.AutoShardedBot):
 	def _prefix_function(self, bot, message):
 		prefixes= (
 			'a!',
+			's!',
+			'ss'
 			'aka',
 			'aka ',
 			'hey aka ',
@@ -31,7 +33,7 @@ class Akasata(commands.AutoShardedBot):
 	async def start(self, *args, **kwargs):
 		self.session = aiohttp.ClientSession(loop= self.loop)
 
-		extensions = ['jishaku', 'ext.core.admin', 'ext.core.meta', 'ext.kaguya.reader', 'ext.kaguya.search']
+		extensions = ['jishaku', 'ext.core.admin', 'ext.core.meta', 'ext.kaguya.reader', 'ext.kaguya.search', 'ext.degeneratia.event']
 		
 		for ext in extensions:
 			self.load_extension(ext)
