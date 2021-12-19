@@ -32,13 +32,13 @@ class Akasata(commands.AutoShardedBot):
 	
 	async def start(self, *args, **kwargs):
 		self.session = aiohttp.ClientSession(loop= self.loop)
-
+		await super().start(*args, **kwargs)
+		await self.wait_until_ready()
+		
 		extensions = ['jishaku', 'ext.core.admin', 'ext.core.meta', 'ext.kaguya.reader', 'ext.kaguya.search', 'ext.degeneratia.event']
 		
 		for ext in extensions:
 			self.load_extension(ext)
-
-		await super().start(*args, **kwargs)
 
 
 	async def close(self, *args, **kwargs):
