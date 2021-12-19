@@ -45,7 +45,7 @@ def authorized():
 	return commands.check(predicate)
 
 #The cog
-class MemeEvent(commands.Cog):
+class MemeEvent(commands.Cog, name= 'Meme event'):
 
 	def __init__(self, bot):
 		self.bot = bot
@@ -334,6 +334,8 @@ class MemeEvent(commands.Cog):
 	@commands.guild_only()
 	@commands.command(name= 'stats')
 	async def _global_stats(self, ctx):
+		'''Displays statistics for the event..'''
+
 		scount = len([s for s in self.cache.submissions if not self.is_disqualified(s)])
 
 		if not scount:
@@ -345,6 +347,8 @@ class MemeEvent(commands.Cog):
 	@commands.guild_only()
 	@commands.command(name= 'userstats', aliases= ['ustats'])
 	async def _stat_for_user(self, ctx, user : discord.User = None):
+		'''Displays statistics of for user.'''
+
 		user = user or ctx.author
 		submissions = self.cache.submissions_by(user)
 
@@ -358,6 +362,8 @@ class MemeEvent(commands.Cog):
 	@commands.guild_only()
 	@commands.command(name= 'rankings', aliases= ['ranks', 'rank', 'top'])
 	async def _rank_table(self, ctx):
+		'''Dispalys a list of the most upvoted submissions'''
+
 		r = sorted(self.cache.submissions, key= lambda s : len(self.cache.upvotes[s.id]), reverse= True)
 		strings = [f'**{r.index(s)+1}.** `{s.embeds[0].title}` by {s.mentions[0]}: `{len(self.cache.upvotes[s.id])-1}` upvote(s).' for s in r][:min(10, len(r))]
 		await ctx.send('\n'.join(strings))
@@ -365,6 +371,8 @@ class MemeEvent(commands.Cog):
 	@commands.guild_only()
 	@commands.command(name= 'urankings', aliases= ['uranks', 'urank'])
 	async def _user_rank_table(self, ctx):
+		'''Displays a list of most upvoted users.'''
+		
 		users = set([s.mentions[0] for s in self.cache.submissions])
 		table = sorted([(user, sum([len(self.cache.upvotes[s.id])-1 for s in self.cache.submissions_by(user) if not self.is_disqualified(s)])) 
 						for user in users], key= lambda t : t[1], reverse= True)
