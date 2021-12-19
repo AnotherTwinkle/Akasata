@@ -18,7 +18,7 @@ class Akasata(commands.AutoShardedBot):
 		prefixes= (
 			'a!',
 			's!',
-			'ss'
+			'ss',
 			'aka',
 			'aka ',
 			'hey aka ',
@@ -33,13 +33,6 @@ class Akasata(commands.AutoShardedBot):
 	async def start(self, *args, **kwargs):
 		self.session = aiohttp.ClientSession(loop= self.loop)
 		await super().start(*args, **kwargs)
-		await self.wait_until_ready()
-		
-		extensions = ['jishaku', 'ext.core.admin', 'ext.core.meta', 'ext.kaguya.reader', 'ext.kaguya.search', 'ext.degeneratia.event']
-		
-		for ext in extensions:
-			self.load_extension(ext)
-
 
 	async def close(self, *args, **kwargs):
 		await self.session.close()
@@ -49,6 +42,14 @@ class Akasata(commands.AutoShardedBot):
 	async def on_ready(self):
 		print(f'{self.user}: Ready. ({self.user.id})')
 		print(f'{sum([guild.member_count for guild in self.guilds])} members.')
+		extensions = ['jishaku', 'ext.core.admin', 'ext.core.meta', 'ext.kaguya.reader', 'ext.kaguya.search', 'ext.degeneratia.event']
+		
+		for ext in extensions:
+			try:
+				self.load_extension(ext)
+			except commands.ExtensionAlreadyLoaded:
+				pass
+
 
 	async def on_command_error(self, ctx, error):
 		if hasattr(ctx.command,'on_error'):
