@@ -151,7 +151,7 @@ class MemeEvent(commands.Cog, name= 'Meme event'):
 		# This should only be called during meme review
 		if not self.is_submission(payload.message_id):
 			return
-		self.cache.update((await self.private_submissions_channel.fetch_message(payload.message_id)) #getch_message is too.. well.. *fast*
+		self.cache.update((await self.private_submissions_channel.fetch_message(payload.message_id))) #getch_message is too.. well.. *fast*
 		
 	@commands.Cog.listener('on_raw_reaction_add')
 	async def on_upvote(self, payload):
