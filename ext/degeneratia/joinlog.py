@@ -9,19 +9,25 @@ class JoinOrLeaveEventLogger(commands.Cog):
 		self.guild = self.bot.get_guild(GUILD_ID)
 		self.channel = self.bot.get_channel(CHANNEL_ID)
 
-	def cog_check(self, ctx):
-		return ctx.guild == self.guild
-
 	@commands.Cog.listener('on_member_join')
 	async def on_member_join(self, member):
+		if member.guild != self.guild:
+			return
+
 		await self.channel.send(f'`{member}` just joined the server.')
 
 	@commands.Cog.listener('on_member_remove')
 	async def on_member_remove(self, member):
+		if member.guild != self.guild:
+			return
+
 		await self.channel.send(f'`{member}` has left the server.')
 
 	@commands.Cog.listener('on_member_ban')
 	async def on_member_ban(self, guild, user):
+		if guild != self.guild:
+			return
+
 		await self.channel.send(f'(`{user}` was banned).')
 
 
