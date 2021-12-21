@@ -92,7 +92,7 @@ class MemeEvent(commands.Cog, name= 'Meme event'):
 		index = len(self.cache.submissions) + 1
 		index_for_user = len(self.cache.submissions_by(author)) + 1
 		caption = s.content
-		image_url = (await self.dump_channel.send(content= f'{author.mention}', file= await self.file_from_url(url= s.attachments[0].url, filename= f'submission.{s.attachments[0].filename.split(".")[-1].lower()}'))).attachments[0].url
+		image_url = (await self.dump_channel.send(content= f'{author}', file= await self.file_from_url(url= s.attachments[0].url, filename= f'submission.{s.attachments[0].filename.split(".")[-1].lower()}'))).attachments[0].url
 
 		embed = SubmissionEmbed(caption, author, index, index_for_user, image_url)
 		m = await self.private_submissions_channel.send(content= f'{author.mention} | Submitted <t:{submission_time}:R>.', embed = embed)
