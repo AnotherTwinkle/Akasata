@@ -107,7 +107,7 @@ class MemeEvent(commands.Cog, name= 'Meme event'):
 			or message.author == self.bot.user):
 			return
 
-		if not message.attachments or message.author.bot and (not message.author.id in MODERATORS):
+		if not (message.attachments or message.author.bot) and (message.author.id not in MODERATORS):
 			return await self.delete_message(message)
 
 		s = await self.submit(message)
