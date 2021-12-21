@@ -1,7 +1,7 @@
 from discord.ext import commands
 
-GUILD_ID : int = 918929892618407966
-CHANNEL_ID : int = 919202798388789278
+GUILD_ID : int = 742276772355113041
+CHANNEL_ID : int = 922785175715332130
 
 class JoinOrLeaveEventLogger(commands.Cog):
 	def __init__(self, bot):
