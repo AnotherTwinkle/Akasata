@@ -42,7 +42,7 @@ class Akasata(commands.AutoShardedBot):
 	async def on_ready(self):
 		print(f'{self.user}: Ready. ({self.user.id})')
 		print(f'{sum([guild.member_count for guild in self.guilds])} members.')
-		extensions = ['jishaku', 'ext.core.admin', 'ext.core.meta', 'ext.kaguya.reader', 'ext.kaguya.search', 'ext.degeneratia.event']
+		extensions = ['jishaku', 'ext.core.admin', 'ext.core.meta', 'ext.kaguya.reader', 'ext.kaguya.search', 'ext.degeneratia.event', 'ext.degeneratia.joinlog']
 		
 		for ext in extensions:
 			try:
