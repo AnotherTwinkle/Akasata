@@ -3,14 +3,13 @@ from discord.ext import commands
 GUILD_ID : int = 918929892618407966
 CHANNEL_ID : int = 919202798388789278
 
-
 class JoinOrLeaveEventLogger(commands.Cog):
 	def __init__(self, bot):
 		self.bot = bot
 		self.guild = self.bot.get_guild(GUILD_ID)
 		self.channel = self.bot.get_channel(CHANNEL_ID)
 
-	async def cog_check(self, ctx):
+	def cog_check(self, ctx):
 		return ctx.guild == self.guild
 
 	@commands.Cog.listener('on_member_join')
