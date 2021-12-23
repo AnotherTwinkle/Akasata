@@ -71,7 +71,7 @@ class Admin(commands.Cog):
 			pass
 
 
-	@commands.command(hidden= True, aliases= 'img')
+	@commands.command(hidden= True, aliases= ['img'])
 	async def image(self, ctx, *, name : str):
   		name = urllib.parse.quote(name if name.lower().endswith('.png') else name + '.png')
   		return await ctx.send(f'https://raw.githubusercontent.com/AnotherTwinkle/degenclub/master/game/images/{name}')
