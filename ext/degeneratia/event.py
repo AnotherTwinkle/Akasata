@@ -168,7 +168,7 @@ class MemeEvent(commands.Cog, name= 'Meme event'):
 		if not self.bot.user == user and (len(self.cache.upvoted_by(user)) >= MAX_UPVOTE_LIMIT
 			or self.cache.get(message.id).mentions[0].id == user.id
 			or self.is_disqualified(message)
-			or SUBMISSION_END_TIME < round(time.time())):
+			or SUBMISSION_END_TIME > round(time.time())):
 
 			await asyncio.sleep(REACTION_REMOVE_SLEEP_TIME)
 			await message.remove_reaction(self.bot.get_emoji(UPVOTE_EMOJI_ID), user)
