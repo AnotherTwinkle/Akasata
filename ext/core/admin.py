@@ -4,7 +4,6 @@ import discord
 from discord.ext import commands
 from jishaku.codeblocks import codeblock_converter
 
-import urllib
 
 class Admin(commands.Cog):
 	'''Admin control suite'''
@@ -69,13 +68,6 @@ class Admin(commands.Cog):
 			await ctx.message.delete()
 		except exceptions:
 			pass
-
-
-	@commands.command(hidden= True, aliases= ['img'])
-	async def image(self, ctx, *, name : str):
-  		name = urllib.parse.quote(name if name.lower().endswith('.png') else name + '.png')
-  		return await ctx.send(f'https://raw.githubusercontent.com/AnotherTwinkle/degenclub/master/game/images/{name}')
-
 
 def setup(bot):
 	bot.add_cog(Admin(bot))
