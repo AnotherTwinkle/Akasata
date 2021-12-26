@@ -26,7 +26,7 @@ class DegenClubUtils(commands.Cog):
 		if message.channel not in self.channels or message.author.bot: 
 			return
 
-		if (not message.content.startswith((self.dialouge_safe_prefix, self.action_safe_prefix))):j
+		if (not message.content.startswith((self.dialouge_safe_prefix, self.action_safe_prefix))):
 			return
 
 		l = message.content[3:].split(' ')  # Remove the safe prefix and make each word part of a list
