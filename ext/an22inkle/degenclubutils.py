@@ -17,7 +17,7 @@ class DegenClubUtils(commands.Cog):
 		return await ctx.send(f'https://raw.githubusercontent.com/AnotherTwinkle/degenclub/master/game/images/{name}')
 
 	@commands.command(hidden= True, name='reflectionchannel', aliases= ['rfc', 'rc'])
-	async def _set_reflection_channel(self,  ctx, channel: discord.Channel):
+	async def _set_reflection_channel(self,  ctx, channel: discord.TextChannel):
 		self.channels[ctx.channel] = channel
 		await ctx.send('ok.')
 
