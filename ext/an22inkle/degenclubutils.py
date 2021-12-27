@@ -36,7 +36,7 @@ class DegenClubUtils(commands.Cog):
 
 		
 		if message.content.startswith(self.action_safe_prefix):
-			content = f'**{' '.join(l)}**' # Bold the whole fucking thing
+			content = f"**{' '.join(l)}**" # Bold the whole fucking thing
 
 		await self.channels[message.channel].send(content)
 
