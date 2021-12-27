@@ -32,10 +32,11 @@ class DegenClubUtils(commands.Cog):
 		l = message.content[3:].split(' ')  # Remove the safe prefix and make each word part of a list
 		if message.content.startswith(self.dialouge_safe_prefix):
 			l[0] = f'**{l[0]}**' # Bold the first word, this should be the actor of the dialouge
+			content = f"{l[0]} \"{' '.join(l[1:])}\""
 
-		content = ' '.join(l)
+		
 		if message.content.startswith(self.action_safe_prefix):
-			content = f'**{content}**' # Bold the whole fucking thing
+			content = f'**{' '.join(l)}**' # Bold the whole fucking thing
 
 		await self.channels[message.channel].send(content)
 
